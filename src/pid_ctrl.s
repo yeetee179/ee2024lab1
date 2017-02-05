@@ -39,8 +39,8 @@ pid_ctrl:
 	ADD R5,R0     @sn = sn + en
 
 	CMP R5,THIS_IS_9500000
-	IT LE
-	LDRLE R5,THIS_IS_9500000
+	IT GE
+	LDRGE R5,THIS_IS_9500000
 
 @@compare negative here dunno how to do
 
