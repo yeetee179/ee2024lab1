@@ -97,11 +97,11 @@ int main(void)
         e_scaling2 = e_scaling/1;
 
         u = pid_ctrl(e_scaling2,  st);
-        printf("u for asm is %lf\n", u);
+//        printf("u for asm is %lf\n", u);
 
         u = u/100000000;
 
-//       	printf("%lf\n",e);
+       	printf("%lf\n",e);
     }
     stopTicks = usTicks;
     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
@@ -132,7 +132,7 @@ int main(void)
 
 
 
-//	       	printf("%lf\n",e);
+	       	printf("%lf\n",e);
 	    }
 	    stopTicks = usTicks;
 	    printf("Time taken (C version): %ld microseconds\n",(stopTicks-startTicks));

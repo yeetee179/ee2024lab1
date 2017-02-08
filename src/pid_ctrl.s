@@ -25,11 +25,9 @@ pid_ctrl:
    @LDR R1,st
 	LDR R2,=sn    @R5 = sn     address
 	LDR R3,=enOld @R6 = enold  address
-	LDR R4,=un    @R7 = un     address
 
 	LDR R5,[R2]   @R5 = sn     value
 	LDR R6,[R3]   @R6 = enOld  value
-	LDR R7,[R4]   @R7 = un     value
 
 	CMP R1,#1     @if (st ==1)  sn = enOld = 0.0
 	ITT EQ
@@ -37,15 +35,22 @@ pid_ctrl:
 	MOVSEQ R6, #0
 
 	ADD R5,R0     @sn = sn + en
+	STR R5,[R2]
 
-	CMP R5,THIS_IS_9500000
-	IT GE
-	LDRGE R5,THIS_IS_9500000
+	LDR R12,THIS_IS_9500000 //R12 contain the 95000000
 
-@@compare negative here dunno how to do
+	CMP R5,R12
+	IT GT
+	MOVGT R5,R12
+
+	LDR R12,THIS_IS_neg_9500000 //R12 contain the -95000000
+
+	CMP R5,R12
+	IT LT
+	MOVLT R5,R12
 
 
-
+////////////////////////////////////////////////////////////////////////////////////
 	LDR R8,KP      @R8 = Kp
 	MUL R9,R0,R8   @R9 = Kp*en
 	LDR R8,KI      @R8 = ki
@@ -55,19 +60,25 @@ pid_ctrl:
 	               @R9 is free
 	LDR R9,KD      @R9 = Kd
 				   @R9 is NOT free
-	SUB R0,R6      @R0 = (en-enOld)
-	MUL R8,R0,R9   @R8 = kd * (en-enOld)
+	SUB R4,R0,R6   @R4 = (en-enOld)
+	MUL R8,R4,R9   @R8 = kd * (en-enOld)
 				   @R8 is not free
 	ADD R8,R10     @R8 = un
 
 	STR R0,[R3]
 
+
 	MOVS R0,R8
-	LDR R1,KP
 
 
 
-
+@ POP the registers you modify, e.g. R2, R3, R4 and R5*, from the stack
+@ * this is just an example; the actual registers you use may be different
+@ (this will be explained in lectures)
+//why stack (push and pop)////////////////////
+	POP	{R1-R12}
+ 	BX	LR
+//BX exit from assemblys
 //declare constant.
 KP:
 	.word 25
@@ -77,14 +88,20 @@ KD:
 	.word 80
 THIS_IS_9500000:
 	.word 9500000
+THIS_IS_1000000:
+	.word 1000000
+THIS_IS_neg_9500000:
+	.word -9500000
+THIS_IS_neg_9500001:
+	.word -9500001
+
+THIS_IS_1:
+	.word 1
+THIS_IS_2:
+	.word 2
+THIS_IS_3:
+	.word 3
 //declare variables
 .lcomm sn 4
 .lcomm enOld 4
 .lcomm un 4
-@ POP the registers you modify, e.g. R2, R3, R4 and R5*, from the stack
-@ * this is just an example; the actual registers you use may be different
-@ (this will be explained in lectures)
-//why stack (push and pop)////////////////////
-	POP	{R1-R12}
- 	BX	LR
-//BX exit from assemblys
