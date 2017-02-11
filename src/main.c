@@ -54,33 +54,16 @@ double PIDcontrol(double en, unsigned start)
 
 }
 
-//double PIDcontrol2(double en, unsigned start)
-//{
-//    static double Kp=25, Ki=10,  Kd=80, sn, enOld, un;
-//    if (start)
-//    {
-//        sn = enOld = 0.0;
-//    }
-//    sn = sn + en;
-//    if (sn>9500000) sn=9500000;
-//    else if (sn<-9500000) sn=-9500000;
-//    un = Kp*en + Ki*sn + Kd*(en-enOld);
-//
-//    enOld = en;
-//    return(un);
-//}
-
 int main(void)
 {
     int i, startTicks, stopTicks;
     unsigned int st;
     double sp, y, e, u;
 	double e_scaling =0;
-	long e_scaling2 =0;
 
 	// SystemTick clock configuration
 	SysTick_Config(SystemCoreClock / 1000000);  // every 1us
-//
+
 //  ASM version
 	sp = 1.0;
 	u = 0.0;
@@ -92,16 +75,13 @@ int main(void)
         y = plant(u,st,-0.8,0.2); // Do NOT change the plant parameters
         e = sp - y;
 
+        e_scaling = (e*1000.0);
 
-        e_scaling = (e*1000000.0);
-        e_scaling2 = e_scaling/1;
+        u = pid_ctrl(e_scaling,  st);
 
-        u = pid_ctrl(e_scaling2,  st);
-//        printf("u for asm is %lf\n", u);
+        u = u*0.00001;
 
-        u = u/100000000;
-
-       	printf("%lf\n",e);
+       	printf("%0.3f\n",e);
     }
     stopTicks = usTicks;
     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
@@ -118,22 +98,9 @@ int main(void)
 	        y = plant(u,st,-0.8,0.2); // Do NOT change the plant parameters
 	        e = sp - y;
 
-//	        e_scaling = (e*1000000.0);
-//	        e_scaling2 = e_scaling/1;
-//
-//	        u = PIDcontrol(e_scaling2, st);
-//
-//	        u = u/100000000;
-
 	        u = PIDcontrol(e, st);
 
-//	        printf("u for c is %lf\n", u);
-
-
-
-
-
-	       	printf("%lf\n",e);
+	       	printf("%0.3f\n",e);
 	    }
 	    stopTicks = usTicks;
 	    printf("Time taken (C version): %ld microseconds\n",(stopTicks-startTicks));
