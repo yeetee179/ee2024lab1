@@ -88,19 +88,9 @@ KD:
 	.word 80
 THIS_IS_9500000:
 	.word 9500000
-THIS_IS_1000000:
-	.word 1000000
 THIS_IS_neg_9500000:
 	.word -9500000
-THIS_IS_neg_9500001:
-	.word -9500001
 
-THIS_IS_1:
-	.word 1
-THIS_IS_2:
-	.word 2
-THIS_IS_3:
-	.word 3
 //declare variables
 .lcomm sn 4
 .lcomm enOld 4
