@@ -47,7 +47,7 @@ double PIDcontrol(double en, unsigned start)
     }
     sn = sn + en;
     if (sn>9.5) sn=9.5;
-//    else if (sn<-9.5) sn=-9.5;
+    else if (sn<-9.5) sn=-9.5;
     un = Kp*en + Ki*sn + Kd*(en-enOld);
     enOld = en;
     return(un);

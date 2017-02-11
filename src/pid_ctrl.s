@@ -94,10 +94,6 @@ KI:
 	.word 10
 KD:
 	.word 80
-THIS_IS_9500000:
-	.word 9500000
-THIS_IS_neg_9500000:
-	.word -9500000
 THIS_IS_9500:
 	.word 9500
 THIS_IS_neg_9500:
