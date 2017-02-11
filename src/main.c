@@ -81,6 +81,7 @@ int main(void)
 
         u = u*0.00001;
 
+
        	printf("%0.3f\n",e);
     }
     stopTicks = usTicks;
