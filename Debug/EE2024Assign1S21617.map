@@ -747,11 +747,11 @@ OUTPUT(EE2024Assign1S21617.axf elf32-littlearm)
  .debug_ranges  0x00000060       0x38 ./src/main.o
  .debug_ranges  0x00000098       0x18 C:\Users\user-pc\Desktop\EE2024WorkSpace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
 
-.debug_line     0x00000000      0xd35
+.debug_line     0x00000000      0xd33
  .debug_line    0x00000000      0x452 ./src/cr_startup_lpc17.o
  .debug_line    0x00000452      0x47b ./src/main.o
- .debug_line    0x000008cd       0x65 ./src/pid_ctrl.o
- .debug_line    0x00000932      0x403 C:\Users\user-pc\Desktop\EE2024WorkSpace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x000008cd       0x63 ./src/pid_ctrl.o
+ .debug_line    0x00000930      0x403 C:\Users\user-pc\Desktop\EE2024WorkSpace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
 
 .debug_macinfo  0x00000000    0x144d8
  .debug_macinfo
