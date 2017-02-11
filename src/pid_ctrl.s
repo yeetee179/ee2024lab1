@@ -39,53 +39,31 @@ pid_ctrl:
 
 	LDR R12,THIS_IS_9500 //R12 contain the 9500
 	CMP R5,R12
-	ITT GT
+	IT GT
 	MOVGT R5,R12
-	MOV R4, #1
-
 
 	LDR R12,THIS_IS_neg_9500 //R12 contain the -9500
 	CMP R5,R12
 	IT LT
 	MOVLT R5,R12
 ////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-
-
-////////////////////////////////////////////////////////////////////////////////////
-//	LDR R8,KP      @R8 = Kp
-//	MUL R9,R0,R8   @R9 = Kp*en
-//	LDR R8,KI      @R8 = ki
-//	MUL R10,R5,R8  @R10 = Ki*sn
-				   @R8 is free
-//	ADD R10,R9	   @R10 = Kp*en + Ki*sn
-	               @R9 is free
-//	LDR R9,KD      @R9 = Kd
-				   @R9 is NOT free
-//	SUB R4,R0,R6   @R4 = (en-enOld)
-//	MUL R8,R4,R9   @R8 = kd * (en-enOld)
-					   @R8 is not free
-//	ADD R8,R10     @R8 = un
-
-//	STR R0,[R3]
-
-//	MOVS R0,R8
 //////////////////////////////////////////////////////////////////////////////////////
 	MOV R8,#25      @R8 = Kp
 	MUL R9,R0,R8   @R9 = Kp*en
+
 	MOV R8,#10      @R8 = ki
 	MUL R10,R5,R8  @R10 = Ki*sn
 				   @R8 is free
+
 	ADD R10,R9	   @R10 = Kp*en + Ki*sn
 	               @R9 is free
+
 	MOV R9,#80      @R9 = Kd
 				   @R9 is NOT free
 	SUB R4,R0,R6   @R4 = (en-enOld)
-	MLA R8,R4,R9,R10   @R8 = kd * (en-enOld)
+	MLA R8,R4,R9,R10 @R8 = kd * (en-enOld) + ki*sn + Kp*en
 				   @R8 is not free
-	ADD R8,R10     @R8 = un
-
+				     @R8 = un
 	STR R0,[R3]
 
 	MOVS R0,R8
