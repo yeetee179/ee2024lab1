@@ -132,6 +132,7 @@ int main(void)
 
 
 
+
 	       	printf("%lf\n",e);
 	    }
 	    stopTicks = usTicks;
