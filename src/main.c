@@ -81,7 +81,7 @@ int main(void)
 
         u = u*0.00001;
 
-       	printf("%f\n",e);
+//       	printf("%f\n",e);
     }
     stopTicks = usTicks;
     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
@@ -100,7 +100,7 @@ int main(void)
 
 	        u = PIDcontrol(e, st);
 
-	       	printf("%f\n",e);
+//	       	printf("%f\n",e);
 
 	    }
 	    stopTicks = usTicks;
