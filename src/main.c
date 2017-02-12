@@ -65,8 +65,8 @@ int main(void)
 	SysTick_Config(SystemCoreClock / 1000000);  // every 1us
 
 //  ASM version
-	sp = 1.0;
-	u = 0.0;
+	sp = 1;
+	u = 3.0;
 	startTicks = usTicks;
     for (i=0; i<50; i++)
     {
@@ -80,16 +80,15 @@ int main(void)
         u = pid_ctrl(e_scaling,  st);
 
         u = u*0.00000001;
-
-//       	printf("%f\n",e);
+       	printf("%f\n",e);
     }
     stopTicks = usTicks;
     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
 
 //  C version
 	//  C version
-	    sp = 1.0;
-	    u = 0.0;
+	    sp = 1;
+	    u = 3.0;
 	    startTicks = usTicks;
 	    for (i=0; i<50; i++)
 	    {
@@ -100,7 +99,7 @@ int main(void)
 
 	        u = PIDcontrol(e, st);
 
-//	       	printf("%f\n",e);
+	       	printf("%f\n",e);
 	    }
 	    stopTicks = usTicks;
 	    printf("Time taken (C version): %ld microseconds\n",(stopTicks-startTicks));
