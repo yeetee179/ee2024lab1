@@ -2321,422 +2321,438 @@
  573              		.section	.rodata
  574              		.align	2
  575              	.LC0:
- 576 0000 54696D65 		.ascii	"Time taken (ASM version): %ld microseconds\012\000"
- 576      2074616B 
- 576      656E2028 
- 576      41534D20 
- 576      76657273 
- 577              		.align	2
+ 576 0000 256C660A 		.ascii	"%lf\012\000"
+ 576      00
+ 577 0005 000000   		.align	2
  578              	.LC1:
- 579 002c 54696D65 		.ascii	"Time taken (C version): %ld microseconds\012\000"
+ 579 0008 54696D65 		.ascii	"Time taken (ASM version): %ld microseconds\012\000"
  579      2074616B 
  579      656E2028 
- 579      43207665 
- 579      7273696F 
- 580 0056 0000     		.section	.text.main,"ax",%progbits
- 581              		.align	2
- 582              		.global	main
- 583              		.thumb
- 584              		.thumb_func
- 586              	main:
- 587              	.LFB32:
+ 579      41534D20 
+ 579      76657273 
+ 580              		.align	2
+ 581              	.LC2:
+ 582 0034 54696D65 		.ascii	"Time taken (C version): %ld microseconds\012\000"
+ 582      2074616B 
+ 582      656E2028 
+ 582      43207665 
+ 582      7273696F 
+ 583 005e 0000     		.section	.text.main,"ax",%progbits
+ 584              		.align	2
+ 585              		.global	main
+ 586              		.thumb
+ 587              		.thumb_func
+ 589              	main:
+ 590              	.LFB32:
   56:../src/main.c **** 
   57:../src/main.c **** int main(void)
   58:../src/main.c **** {
- 588              		.loc 2 58 0
- 589              		.cfi_startproc
- 590              		@ args = 0, pretend = 0, frame = 72
- 591              		@ frame_needed = 1, uses_anonymous_args = 0
- 592 0000 80B5     		push	{r7, lr}
- 593              	.LCFI14:
- 594              		.cfi_def_cfa_offset 8
- 595              		.cfi_offset 14, -4
- 596              		.cfi_offset 7, -8
- 597 0002 96B0     		sub	sp, sp, #88
- 598              	.LCFI15:
- 599              		.cfi_def_cfa_offset 96
- 600 0004 04AF     		add	r7, sp, #16
- 601              	.LCFI16:
- 602              		.cfi_def_cfa 7, 80
+ 591              		.loc 2 58 0
+ 592              		.cfi_startproc
+ 593              		@ args = 0, pretend = 0, frame = 72
+ 594              		@ frame_needed = 1, uses_anonymous_args = 0
+ 595 0000 80B5     		push	{r7, lr}
+ 596              	.LCFI14:
+ 597              		.cfi_def_cfa_offset 8
+ 598              		.cfi_offset 14, -4
+ 599              		.cfi_offset 7, -8
+ 600 0002 96B0     		sub	sp, sp, #88
+ 601              	.LCFI15:
+ 602              		.cfi_def_cfa_offset 96
+ 603 0004 04AF     		add	r7, sp, #16
+ 604              	.LCFI16:
+ 605              		.cfi_def_cfa 7, 80
   59:../src/main.c ****     int i, startTicks, stopTicks;
   60:../src/main.c ****     unsigned int st;
   61:../src/main.c ****     double sp, y, e, u;
   62:../src/main.c **** 	double e_scaling =0;
- 603              		.loc 2 62 0
- 604 0006 4FF00002 		mov	r2, #0
- 605 000a 4FF00003 		mov	r3, #0
- 606 000e C7E90C23 		strd	r2, [r7, #48]
+ 606              		.loc 2 62 0
+ 607 0006 4FF00002 		mov	r2, #0
+ 608 000a 4FF00003 		mov	r3, #0
+ 609 000e C7E90C23 		strd	r2, [r7, #48]
   63:../src/main.c **** 	long e_scaling2 =0;
- 607              		.loc 2 63 0
- 608 0012 4FF00003 		mov	r3, #0
- 609 0016 FB62     		str	r3, [r7, #44]
+ 610              		.loc 2 63 0
+ 611 0012 4FF00003 		mov	r3, #0
+ 612 0016 FB62     		str	r3, [r7, #44]
   64:../src/main.c **** 
   65:../src/main.c **** 	// SystemTick clock configuration
   66:../src/main.c **** 	SysTick_Config(SystemCoreClock / 1000000);  // every 1us
- 610              		.loc 2 66 0
- 611 0018 40F20003 		movw	r3, #:lower16:SystemCoreClock
- 612 001c C0F20003 		movt	r3, #:upper16:SystemCoreClock
- 613 0020 1A68     		ldr	r2, [r3, #0]
- 614 0022 4DF68363 		movw	r3, #56963
- 615 0026 C4F21B33 		movt	r3, 17179
- 616 002a A3FB0213 		umull	r1, r3, r3, r2
- 617 002e 4FEA9343 		lsr	r3, r3, #18
- 618 0032 1846     		mov	r0, r3
- 619 0034 FFF7FEFF 		bl	SysTick_Config
+ 613              		.loc 2 66 0
+ 614 0018 40F20003 		movw	r3, #:lower16:SystemCoreClock
+ 615 001c C0F20003 		movt	r3, #:upper16:SystemCoreClock
+ 616 0020 1A68     		ldr	r2, [r3, #0]
+ 617 0022 4DF68363 		movw	r3, #56963
+ 618 0026 C4F21B33 		movt	r3, 17179
+ 619 002a A3FB0213 		umull	r1, r3, r3, r2
+ 620 002e 4FEA9343 		lsr	r3, r3, #18
+ 621 0032 1846     		mov	r0, r3
+ 622 0034 FFF7FEFF 		bl	SysTick_Config
   67:../src/main.c **** //
   68:../src/main.c **** //  ASM version
   69:../src/main.c **** 	sp = 1.0;
- 620              		.loc 2 69 0
- 621 0038 4FF00002 		mov	r2, #0
- 622 003c 4FF07E53 		mov	r3, #1065353216
- 623 0040 03F5E003 		add	r3, r3, #7340032
- 624 0044 C7E90823 		strd	r2, [r7, #32]
+ 623              		.loc 2 69 0
+ 624 0038 4FF00002 		mov	r2, #0
+ 625 003c 4FF07E53 		mov	r3, #1065353216
+ 626 0040 03F5E003 		add	r3, r3, #7340032
+ 627 0044 C7E90823 		strd	r2, [r7, #32]
   70:../src/main.c **** 	u = 0.0;
- 625              		.loc 2 70 0
- 626 0048 4FF00002 		mov	r2, #0
- 627 004c 4FF00003 		mov	r3, #0
- 628 0050 C7E90E23 		strd	r2, [r7, #56]
+ 628              		.loc 2 70 0
+ 629 0048 4FF00002 		mov	r2, #0
+ 630 004c 4FF00003 		mov	r3, #0
+ 631 0050 C7E90E23 		strd	r2, [r7, #56]
   71:../src/main.c **** 	startTicks = usTicks;
- 629              		.loc 2 71 0
- 630 0054 40F20003 		movw	r3, #:lower16:usTicks
- 631 0058 C0F20003 		movt	r3, #:upper16:usTicks
- 632 005c 1B68     		ldr	r3, [r3, #0]
- 633 005e FB61     		str	r3, [r7, #28]
+ 632              		.loc 2 71 0
+ 633 0054 40F20003 		movw	r3, #:lower16:usTicks
+ 634 0058 C0F20003 		movt	r3, #:upper16:usTicks
+ 635 005c 1B68     		ldr	r3, [r3, #0]
+ 636 005e FB61     		str	r3, [r7, #28]
   72:../src/main.c ****     for (i=0; i<50; i++)
- 634              		.loc 2 72 0
- 635 0060 4FF00003 		mov	r3, #0
- 636 0064 7B64     		str	r3, [r7, #68]
- 637 0066 53E0     		b	.L17
- 638              	.L20:
+ 637              		.loc 2 72 0
+ 638 0060 4FF00003 		mov	r3, #0
+ 639 0064 7B64     		str	r3, [r7, #68]
+ 640 0066 5CE0     		b	.L17
+ 641              	.L20:
   73:../src/main.c ****     {
   74:../src/main.c ****         if (i==0) st=1; else st=0;
- 639              		.loc 2 74 0
- 640 0068 7B6C     		ldr	r3, [r7, #68]
- 641 006a 002B     		cmp	r3, #0
- 642 006c 03D1     		bne	.L18
- 643              		.loc 2 74 0 is_stmt 0 discriminator 1
- 644 006e 4FF00103 		mov	r3, #1
- 645 0072 3B64     		str	r3, [r7, #64]
- 646 0074 02E0     		b	.L19
- 647              	.L18:
- 648              		.loc 2 74 0 discriminator 2
- 649 0076 4FF00003 		mov	r3, #0
- 650 007a 3B64     		str	r3, [r7, #64]
- 651              	.L19:
+ 642              		.loc 2 74 0
+ 643 0068 7B6C     		ldr	r3, [r7, #68]
+ 644 006a 002B     		cmp	r3, #0
+ 645 006c 03D1     		bne	.L18
+ 646              		.loc 2 74 0 is_stmt 0 discriminator 1
+ 647 006e 4FF00103 		mov	r3, #1
+ 648 0072 3B64     		str	r3, [r7, #64]
+ 649 0074 02E0     		b	.L19
+ 650              	.L18:
+ 651              		.loc 2 74 0 discriminator 2
+ 652 0076 4FF00003 		mov	r3, #0
+ 653 007a 3B64     		str	r3, [r7, #64]
+ 654              	.L19:
   75:../src/main.c **** 
   76:../src/main.c ****         y = plant(u,st,-0.8,0.2); // Do NOT change the plant parameters
- 652              		.loc 2 76 0 is_stmt 1
- 653 007c 66A3     		adr	r3, .L26
- 654 007e D3E90023 		ldrd	r2, [r3]
- 655 0082 CDE90023 		strd	r2, [sp]
- 656 0086 66A3     		adr	r3, .L26+8
- 657 0088 D3E90023 		ldrd	r2, [r3]
- 658 008c CDE90223 		strd	r2, [sp, #8]
- 659 0090 D7E90E01 		ldrd	r0, [r7, #56]
- 660 0094 3A6C     		ldr	r2, [r7, #64]
- 661 0096 FFF7FEFF 		bl	plant
- 662 009a 0246     		mov	r2, r0
- 663 009c 0B46     		mov	r3, r1
- 664 009e C7E90423 		strd	r2, [r7, #16]
+ 655              		.loc 2 76 0 is_stmt 1
+ 656 007c 6EA3     		adr	r3, .L26
+ 657 007e D3E90023 		ldrd	r2, [r3]
+ 658 0082 CDE90023 		strd	r2, [sp]
+ 659 0086 6EA3     		adr	r3, .L26+8
+ 660 0088 D3E90023 		ldrd	r2, [r3]
+ 661 008c CDE90223 		strd	r2, [sp, #8]
+ 662 0090 D7E90E01 		ldrd	r0, [r7, #56]
+ 663 0094 3A6C     		ldr	r2, [r7, #64]
+ 664 0096 FFF7FEFF 		bl	plant
+ 665 009a 0246     		mov	r2, r0
+ 666 009c 0B46     		mov	r3, r1
+ 667 009e C7E90423 		strd	r2, [r7, #16]
   77:../src/main.c ****         e = sp - y;
- 665              		.loc 2 77 0
- 666 00a2 D7E90801 		ldrd	r0, [r7, #32]
- 667 00a6 D7E90423 		ldrd	r2, [r7, #16]
- 668 00aa FFF7FEFF 		bl	__aeabi_dsub
- 669 00ae 0246     		mov	r2, r0
- 670 00b0 0B46     		mov	r3, r1
- 671 00b2 C7E90223 		strd	r2, [r7, #8]
+ 668              		.loc 2 77 0
+ 669 00a2 D7E90801 		ldrd	r0, [r7, #32]
+ 670 00a6 D7E90423 		ldrd	r2, [r7, #16]
+ 671 00aa FFF7FEFF 		bl	__aeabi_dsub
+ 672 00ae 0246     		mov	r2, r0
+ 673 00b0 0B46     		mov	r3, r1
+ 674 00b2 C7E90223 		strd	r2, [r7, #8]
   78:../src/main.c **** 
   79:../src/main.c **** 
   80:../src/main.c ****         e_scaling = (e*1000000.0);
- 672              		.loc 2 80 0
- 673 00b6 D7E90201 		ldrd	r0, [r7, #8]
- 674 00ba 5BA3     		adr	r3, .L26+16
- 675 00bc D3E90023 		ldrd	r2, [r3]
- 676 00c0 FFF7FEFF 		bl	__aeabi_dmul
- 677 00c4 0246     		mov	r2, r0
- 678 00c6 0B46     		mov	r3, r1
- 679 00c8 C7E90C23 		strd	r2, [r7, #48]
+ 675              		.loc 2 80 0
+ 676 00b6 D7E90201 		ldrd	r0, [r7, #8]
+ 677 00ba 63A3     		adr	r3, .L26+16
+ 678 00bc D3E90023 		ldrd	r2, [r3]
+ 679 00c0 FFF7FEFF 		bl	__aeabi_dmul
+ 680 00c4 0246     		mov	r2, r0
+ 681 00c6 0B46     		mov	r3, r1
+ 682 00c8 C7E90C23 		strd	r2, [r7, #48]
   81:../src/main.c ****         e_scaling2 = e_scaling/1;
- 680              		.loc 2 81 0
- 681 00cc D7E90C01 		ldrd	r0, [r7, #48]
- 682 00d0 FFF7FEFF 		bl	__aeabi_d2iz
- 683 00d4 0346     		mov	r3, r0
- 684 00d6 FB62     		str	r3, [r7, #44]
+ 683              		.loc 2 81 0
+ 684 00cc D7E90C01 		ldrd	r0, [r7, #48]
+ 685 00d0 FFF7FEFF 		bl	__aeabi_d2iz
+ 686 00d4 0346     		mov	r3, r0
+ 687 00d6 FB62     		str	r3, [r7, #44]
   82:../src/main.c **** 
   83:../src/main.c ****         u = pid_ctrl(e_scaling2,  st);
- 685              		.loc 2 83 0
- 686 00d8 3B6C     		ldr	r3, [r7, #64]
- 687 00da F86A     		ldr	r0, [r7, #44]
- 688 00dc 1946     		mov	r1, r3
- 689 00de FFF7FEFF 		bl	pid_ctrl
- 690 00e2 0346     		mov	r3, r0
- 691 00e4 1846     		mov	r0, r3
- 692 00e6 FFF7FEFF 		bl	__aeabi_i2d
- 693 00ea 0246     		mov	r2, r0
- 694 00ec 0B46     		mov	r3, r1
- 695 00ee C7E90E23 		strd	r2, [r7, #56]
+ 688              		.loc 2 83 0
+ 689 00d8 3B6C     		ldr	r3, [r7, #64]
+ 690 00da F86A     		ldr	r0, [r7, #44]
+ 691 00dc 1946     		mov	r1, r3
+ 692 00de FFF7FEFF 		bl	pid_ctrl
+ 693 00e2 0346     		mov	r3, r0
+ 694 00e4 1846     		mov	r0, r3
+ 695 00e6 FFF7FEFF 		bl	__aeabi_i2d
+ 696 00ea 0246     		mov	r2, r0
+ 697 00ec 0B46     		mov	r3, r1
+ 698 00ee C7E90E23 		strd	r2, [r7, #56]
   84:../src/main.c ****         u = u/100000000;
- 696              		.loc 2 84 0
- 697 00f2 D7E90E01 		ldrd	r0, [r7, #56]
- 698 00f6 4EA3     		adr	r3, .L26+24
- 699 00f8 D3E90023 		ldrd	r2, [r3]
- 700 00fc FFF7FEFF 		bl	__aeabi_ddiv
- 701 0100 0246     		mov	r2, r0
- 702 0102 0B46     		mov	r3, r1
- 703 0104 C7E90E23 		strd	r2, [r7, #56]
-  72:../src/main.c ****     for (i=0; i<50; i++)
- 704              		.loc 2 72 0
- 705 0108 7B6C     		ldr	r3, [r7, #68]
- 706 010a 03F10103 		add	r3, r3, #1
- 707 010e 7B64     		str	r3, [r7, #68]
- 708              	.L17:
-  72:../src/main.c ****     for (i=0; i<50; i++)
- 709              		.loc 2 72 0 is_stmt 0 discriminator 1
- 710 0110 7B6C     		ldr	r3, [r7, #68]
- 711 0112 312B     		cmp	r3, #49
- 712 0114 A8DD     		ble	.L20
+ 699              		.loc 2 84 0
+ 700 00f2 D7E90E01 		ldrd	r0, [r7, #56]
+ 701 00f6 56A3     		adr	r3, .L26+24
+ 702 00f8 D3E90023 		ldrd	r2, [r3]
+ 703 00fc FFF7FEFF 		bl	__aeabi_ddiv
+ 704 0100 0246     		mov	r2, r0
+ 705 0102 0B46     		mov	r3, r1
+ 706 0104 C7E90E23 		strd	r2, [r7, #56]
   85:../src/main.c **** 
-  86:../src/main.c **** //       	printf("%lf\n",e);
+  86:../src/main.c ****        	printf("%lf\n",e);
+ 707              		.loc 2 86 0
+ 708 0108 40F20003 		movw	r3, #:lower16:.LC0
+ 709 010c C0F20003 		movt	r3, #:upper16:.LC0
+ 710 0110 1846     		mov	r0, r3
+ 711 0112 D7E90223 		ldrd	r2, [r7, #8]
+ 712 0116 FFF7FEFF 		bl	printf
+  72:../src/main.c ****     for (i=0; i<50; i++)
+ 713              		.loc 2 72 0
+ 714 011a 7B6C     		ldr	r3, [r7, #68]
+ 715 011c 03F10103 		add	r3, r3, #1
+ 716 0120 7B64     		str	r3, [r7, #68]
+ 717              	.L17:
+  72:../src/main.c ****     for (i=0; i<50; i++)
+ 718              		.loc 2 72 0 is_stmt 0 discriminator 1
+ 719 0122 7B6C     		ldr	r3, [r7, #68]
+ 720 0124 312B     		cmp	r3, #49
+ 721 0126 9FDD     		ble	.L20
   87:../src/main.c ****     }
   88:../src/main.c ****     stopTicks = usTicks;
- 713              		.loc 2 88 0 is_stmt 1
- 714 0116 40F20003 		movw	r3, #:lower16:usTicks
- 715 011a C0F20003 		movt	r3, #:upper16:usTicks
- 716 011e 1B68     		ldr	r3, [r3, #0]
- 717 0120 7B60     		str	r3, [r7, #4]
+ 722              		.loc 2 88 0 is_stmt 1
+ 723 0128 40F20003 		movw	r3, #:lower16:usTicks
+ 724 012c C0F20003 		movt	r3, #:upper16:usTicks
+ 725 0130 1B68     		ldr	r3, [r3, #0]
+ 726 0132 7B60     		str	r3, [r7, #4]
   89:../src/main.c ****     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
- 718              		.loc 2 89 0
- 719 0122 40F20003 		movw	r3, #:lower16:.LC0
- 720 0126 C0F20003 		movt	r3, #:upper16:.LC0
- 721 012a 7968     		ldr	r1, [r7, #4]
- 722 012c FA69     		ldr	r2, [r7, #28]
- 723 012e 8A1A     		subs	r2, r1, r2
- 724 0130 1846     		mov	r0, r3
- 725 0132 1146     		mov	r1, r2
- 726 0134 FFF7FEFF 		bl	printf
+ 727              		.loc 2 89 0
+ 728 0134 40F20003 		movw	r3, #:lower16:.LC1
+ 729 0138 C0F20003 		movt	r3, #:upper16:.LC1
+ 730 013c 7968     		ldr	r1, [r7, #4]
+ 731 013e FA69     		ldr	r2, [r7, #28]
+ 732 0140 8A1A     		subs	r2, r1, r2
+ 733 0142 1846     		mov	r0, r3
+ 734 0144 1146     		mov	r1, r2
+ 735 0146 FFF7FEFF 		bl	printf
   90:../src/main.c **** 
   91:../src/main.c **** //  C version
   92:../src/main.c **** 	//  C version
   93:../src/main.c **** 	    sp = 1.0;
- 727              		.loc 2 93 0
- 728 0138 4FF00002 		mov	r2, #0
- 729 013c 4FF07E53 		mov	r3, #1065353216
- 730 0140 03F5E003 		add	r3, r3, #7340032
- 731 0144 C7E90823 		strd	r2, [r7, #32]
+ 736              		.loc 2 93 0
+ 737 014a 4FF00002 		mov	r2, #0
+ 738 014e 4FF07E53 		mov	r3, #1065353216
+ 739 0152 03F5E003 		add	r3, r3, #7340032
+ 740 0156 C7E90823 		strd	r2, [r7, #32]
   94:../src/main.c **** 	    u = 0.0;
- 732              		.loc 2 94 0
- 733 0148 4FF00002 		mov	r2, #0
- 734 014c 4FF00003 		mov	r3, #0
- 735 0150 C7E90E23 		strd	r2, [r7, #56]
+ 741              		.loc 2 94 0
+ 742 015a 4FF00002 		mov	r2, #0
+ 743 015e 4FF00003 		mov	r3, #0
+ 744 0162 C7E90E23 		strd	r2, [r7, #56]
   95:../src/main.c **** 	    startTicks = usTicks;
- 736              		.loc 2 95 0
- 737 0154 40F20003 		movw	r3, #:lower16:usTicks
- 738 0158 C0F20003 		movt	r3, #:upper16:usTicks
- 739 015c 1B68     		ldr	r3, [r3, #0]
- 740 015e FB61     		str	r3, [r7, #28]
+ 745              		.loc 2 95 0
+ 746 0166 40F20003 		movw	r3, #:lower16:usTicks
+ 747 016a C0F20003 		movt	r3, #:upper16:usTicks
+ 748 016e 1B68     		ldr	r3, [r3, #0]
+ 749 0170 FB61     		str	r3, [r7, #28]
   96:../src/main.c **** 	    for (i=0; i<50; i++)
- 741              		.loc 2 96 0
- 742 0160 4FF00003 		mov	r3, #0
- 743 0164 7B64     		str	r3, [r7, #68]
- 744 0166 33E0     		b	.L21
- 745              	.L24:
+ 750              		.loc 2 96 0
+ 751 0172 4FF00003 		mov	r3, #0
+ 752 0176 7B64     		str	r3, [r7, #68]
+ 753 0178 3CE0     		b	.L21
+ 754              	.L24:
   97:../src/main.c **** 	    {
   98:../src/main.c **** 	        if (i==0) st=1; else st=0;
- 746              		.loc 2 98 0
- 747 0168 7B6C     		ldr	r3, [r7, #68]
- 748 016a 002B     		cmp	r3, #0
- 749 016c 03D1     		bne	.L22
- 750              		.loc 2 98 0 is_stmt 0 discriminator 1
- 751 016e 4FF00103 		mov	r3, #1
- 752 0172 3B64     		str	r3, [r7, #64]
- 753 0174 02E0     		b	.L23
- 754              	.L22:
- 755              		.loc 2 98 0 discriminator 2
- 756 0176 4FF00003 		mov	r3, #0
- 757 017a 3B64     		str	r3, [r7, #64]
- 758              	.L23:
+ 755              		.loc 2 98 0
+ 756 017a 7B6C     		ldr	r3, [r7, #68]
+ 757 017c 002B     		cmp	r3, #0
+ 758 017e 03D1     		bne	.L22
+ 759              		.loc 2 98 0 is_stmt 0 discriminator 1
+ 760 0180 4FF00103 		mov	r3, #1
+ 761 0184 3B64     		str	r3, [r7, #64]
+ 762 0186 02E0     		b	.L23
+ 763              	.L22:
+ 764              		.loc 2 98 0 discriminator 2
+ 765 0188 4FF00003 		mov	r3, #0
+ 766 018c 3B64     		str	r3, [r7, #64]
+ 767              	.L23:
   99:../src/main.c **** 
  100:../src/main.c **** 	        y = plant(u,st,-0.8,0.2); // Do NOT change the plant parameters
- 759              		.loc 2 100 0 is_stmt 1
- 760 017c 26A3     		adr	r3, .L26
- 761 017e D3E90023 		ldrd	r2, [r3]
- 762 0182 CDE90023 		strd	r2, [sp]
- 763 0186 26A3     		adr	r3, .L26+8
- 764 0188 D3E90023 		ldrd	r2, [r3]
- 765 018c CDE90223 		strd	r2, [sp, #8]
- 766 0190 D7E90E01 		ldrd	r0, [r7, #56]
- 767 0194 3A6C     		ldr	r2, [r7, #64]
- 768 0196 FFF7FEFF 		bl	plant
- 769 019a 0246     		mov	r2, r0
- 770 019c 0B46     		mov	r3, r1
- 771 019e C7E90423 		strd	r2, [r7, #16]
+ 768              		.loc 2 100 0 is_stmt 1
+ 769 018e 2AA3     		adr	r3, .L26
+ 770 0190 D3E90023 		ldrd	r2, [r3]
+ 771 0194 CDE90023 		strd	r2, [sp]
+ 772 0198 29A3     		adr	r3, .L26+8
+ 773 019a D3E90023 		ldrd	r2, [r3]
+ 774 019e CDE90223 		strd	r2, [sp, #8]
+ 775 01a2 D7E90E01 		ldrd	r0, [r7, #56]
+ 776 01a6 3A6C     		ldr	r2, [r7, #64]
+ 777 01a8 FFF7FEFF 		bl	plant
+ 778 01ac 0246     		mov	r2, r0
+ 779 01ae 0B46     		mov	r3, r1
+ 780 01b0 C7E90423 		strd	r2, [r7, #16]
  101:../src/main.c **** 	        e = sp - y;
- 772              		.loc 2 101 0
- 773 01a2 D7E90801 		ldrd	r0, [r7, #32]
- 774 01a6 D7E90423 		ldrd	r2, [r7, #16]
- 775 01aa FFF7FEFF 		bl	__aeabi_dsub
- 776 01ae 0246     		mov	r2, r0
- 777 01b0 0B46     		mov	r3, r1
- 778 01b2 C7E90223 		strd	r2, [r7, #8]
+ 781              		.loc 2 101 0
+ 782 01b4 D7E90801 		ldrd	r0, [r7, #32]
+ 783 01b8 D7E90423 		ldrd	r2, [r7, #16]
+ 784 01bc FFF7FEFF 		bl	__aeabi_dsub
+ 785 01c0 0246     		mov	r2, r0
+ 786 01c2 0B46     		mov	r3, r1
+ 787 01c4 C7E90223 		strd	r2, [r7, #8]
  102:../src/main.c **** 
  103:../src/main.c **** 	        u = PIDcontrol(e, st);
- 779              		.loc 2 103 0
- 780 01b6 D7E90201 		ldrd	r0, [r7, #8]
- 781 01ba 3A6C     		ldr	r2, [r7, #64]
- 782 01bc FFF7FEFF 		bl	PIDcontrol
- 783 01c0 0246     		mov	r2, r0
- 784 01c2 0B46     		mov	r3, r1
- 785 01c4 C7E90E23 		strd	r2, [r7, #56]
+ 788              		.loc 2 103 0
+ 789 01c8 D7E90201 		ldrd	r0, [r7, #8]
+ 790 01cc 3A6C     		ldr	r2, [r7, #64]
+ 791 01ce FFF7FEFF 		bl	PIDcontrol
+ 792 01d2 0246     		mov	r2, r0
+ 793 01d4 0B46     		mov	r3, r1
+ 794 01d6 C7E90E23 		strd	r2, [r7, #56]
+ 104:../src/main.c **** 	       	printf("%lf\n",e);
+ 795              		.loc 2 104 0
+ 796 01da 40F20003 		movw	r3, #:lower16:.LC0
+ 797 01de C0F20003 		movt	r3, #:upper16:.LC0
+ 798 01e2 1846     		mov	r0, r3
+ 799 01e4 D7E90223 		ldrd	r2, [r7, #8]
+ 800 01e8 FFF7FEFF 		bl	printf
   96:../src/main.c **** 	    for (i=0; i<50; i++)
- 786              		.loc 2 96 0
- 787 01c8 7B6C     		ldr	r3, [r7, #68]
- 788 01ca 03F10103 		add	r3, r3, #1
- 789 01ce 7B64     		str	r3, [r7, #68]
- 790              	.L21:
+ 801              		.loc 2 96 0
+ 802 01ec 7B6C     		ldr	r3, [r7, #68]
+ 803 01ee 03F10103 		add	r3, r3, #1
+ 804 01f2 7B64     		str	r3, [r7, #68]
+ 805              	.L21:
   96:../src/main.c **** 	    for (i=0; i<50; i++)
- 791              		.loc 2 96 0 is_stmt 0 discriminator 1
- 792 01d0 7B6C     		ldr	r3, [r7, #68]
- 793 01d2 312B     		cmp	r3, #49
- 794 01d4 C8DD     		ble	.L24
- 104:../src/main.c **** //	       	printf("%lf\n",e);
+ 806              		.loc 2 96 0 is_stmt 0 discriminator 1
+ 807 01f4 7B6C     		ldr	r3, [r7, #68]
+ 808 01f6 312B     		cmp	r3, #49
+ 809 01f8 BFDD     		ble	.L24
  105:../src/main.c **** 	    }
  106:../src/main.c **** 	    stopTicks = usTicks;
- 795              		.loc 2 106 0 is_stmt 1
- 796 01d6 40F20003 		movw	r3, #:lower16:usTicks
- 797 01da C0F20003 		movt	r3, #:upper16:usTicks
- 798 01de 1B68     		ldr	r3, [r3, #0]
- 799 01e0 7B60     		str	r3, [r7, #4]
+ 810              		.loc 2 106 0 is_stmt 1
+ 811 01fa 40F20003 		movw	r3, #:lower16:usTicks
+ 812 01fe C0F20003 		movt	r3, #:upper16:usTicks
+ 813 0202 1B68     		ldr	r3, [r3, #0]
+ 814 0204 7B60     		str	r3, [r7, #4]
  107:../src/main.c **** 	    printf("Time taken (C version): %ld microseconds\n",(stopTicks-startTicks));
- 800              		.loc 2 107 0
- 801 01e2 40F20003 		movw	r3, #:lower16:.LC1
- 802 01e6 C0F20003 		movt	r3, #:upper16:.LC1
- 803 01ea 7968     		ldr	r1, [r7, #4]
- 804 01ec FA69     		ldr	r2, [r7, #28]
- 805 01ee 8A1A     		subs	r2, r1, r2
- 806 01f0 1846     		mov	r0, r3
- 807 01f2 1146     		mov	r1, r2
- 808 01f4 FFF7FEFF 		bl	printf
- 809              	.L25:
+ 815              		.loc 2 107 0
+ 816 0206 40F20003 		movw	r3, #:lower16:.LC2
+ 817 020a C0F20003 		movt	r3, #:upper16:.LC2
+ 818 020e 7968     		ldr	r1, [r7, #4]
+ 819 0210 FA69     		ldr	r2, [r7, #28]
+ 820 0212 8A1A     		subs	r2, r1, r2
+ 821 0214 1846     		mov	r0, r3
+ 822 0216 1146     		mov	r1, r2
+ 823 0218 FFF7FEFF 		bl	printf
+ 824              	.L25:
  108:../src/main.c **** 
  109:../src/main.c **** 	    // Enter an infinite loop, just incrementing a counter
  110:../src/main.c **** 		// This is for convenience to allow registers, variables and memory locations to be inspected at 
  111:../src/main.c **** 		volatile static int loop = 0;
  112:../src/main.c **** 		while (1) {
  113:../src/main.c **** 			loop++;
- 810              		.loc 2 113 0 discriminator 1
- 811 01f8 40F20003 		movw	r3, #:lower16:loop.4880
- 812 01fc C0F20003 		movt	r3, #:upper16:loop.4880
- 813 0200 1B68     		ldr	r3, [r3, #0]
- 814 0202 03F10102 		add	r2, r3, #1
- 815 0206 40F20003 		movw	r3, #:lower16:loop.4880
- 816 020a C0F20003 		movt	r3, #:upper16:loop.4880
- 817 020e 1A60     		str	r2, [r3, #0]
+ 825              		.loc 2 113 0 discriminator 1
+ 826 021c 40F20003 		movw	r3, #:lower16:loop.4880
+ 827 0220 C0F20003 		movt	r3, #:upper16:loop.4880
+ 828 0224 1B68     		ldr	r3, [r3, #0]
+ 829 0226 03F10102 		add	r2, r3, #1
+ 830 022a 40F20003 		movw	r3, #:lower16:loop.4880
+ 831 022e C0F20003 		movt	r3, #:upper16:loop.4880
+ 832 0232 1A60     		str	r2, [r3, #0]
  114:../src/main.c **** 		}
- 818              		.loc 2 114 0 discriminator 1
- 819 0210 F2E7     		b	.L25
- 820              	.L27:
- 821 0212 00BFAFF3 		.align	3
- 821      0080
- 822              	.L26:
- 823 0218 9A999999 		.word	-1717986918
- 824 021c 9999E9BF 		.word	-1075209831
- 825 0220 9A999999 		.word	-1717986918
- 826 0224 9999C93F 		.word	1070176665
- 827 0228 00000000 		.word	0
- 828 022c 80842E41 		.word	1093567616
- 829 0230 00000000 		.word	0
- 830 0234 84D79741 		.word	1100470148
- 831              		.cfi_endproc
- 832              	.LFE32:
- 834              		.bss
- 835              		.align	2
- 836              	loop.4880:
- 837 0004 00000000 		.space	4
- 838              		.align	3
- 839              	enOld.4859:
- 840 0008 00000000 		.space	8
- 840      00000000 
- 841              		.align	3
- 842              	sn.4858:
- 843 0010 00000000 		.space	8
- 843      00000000 
- 844              		.data
- 845              		.align	3
- 848              	Kp.4855:
- 849 0000 00000000 		.word	0
- 850 0004 0000D03F 		.word	1070596096
- 851              		.align	3
- 854              	Ki.4856:
- 855 0008 9A999999 		.word	-1717986918
- 856 000c 9999B93F 		.word	1069128089
- 857              		.align	3
- 860              	Kd.4857:
- 861 0010 9A999999 		.word	-1717986918
- 862 0014 9999E93F 		.word	1072273817
- 863              		.bss
- 864              		.align	3
- 865              	un.4860:
- 866 0018 00000000 		.space	8
- 866      00000000 
- 867              		.align	3
- 868              	x4.4849:
- 869 0020 00000000 		.space	8
- 869      00000000 
- 870              		.align	3
- 871              	x3.4848:
- 872 0028 00000000 		.space	8
- 872      00000000 
- 873              		.align	3
- 874              	x2.4847:
- 875 0030 00000000 		.space	8
- 875      00000000 
- 876              		.align	3
- 877              	x1.4846:
- 878 0038 00000000 		.space	8
- 878      00000000 
+ 833              		.loc 2 114 0 discriminator 1
+ 834 0234 F2E7     		b	.L25
+ 835              	.L27:
+ 836 0236 00BF     		.align	3
+ 837              	.L26:
+ 838 0238 9A999999 		.word	-1717986918
+ 839 023c 9999E9BF 		.word	-1075209831
+ 840 0240 9A999999 		.word	-1717986918
+ 841 0244 9999C93F 		.word	1070176665
+ 842 0248 00000000 		.word	0
+ 843 024c 80842E41 		.word	1093567616
+ 844 0250 00000000 		.word	0
+ 845 0254 84D79741 		.word	1100470148
+ 846              		.cfi_endproc
+ 847              	.LFE32:
+ 849              		.bss
+ 850              		.align	2
+ 851              	loop.4880:
+ 852 0004 00000000 		.space	4
+ 853              		.align	3
+ 854              	enOld.4859:
+ 855 0008 00000000 		.space	8
+ 855      00000000 
+ 856              		.align	3
+ 857              	sn.4858:
+ 858 0010 00000000 		.space	8
+ 858      00000000 
+ 859              		.data
+ 860              		.align	3
+ 863              	Kp.4855:
+ 864 0000 00000000 		.word	0
+ 865 0004 0000D03F 		.word	1070596096
+ 866              		.align	3
+ 869              	Ki.4856:
+ 870 0008 9A999999 		.word	-1717986918
+ 871 000c 9999B93F 		.word	1069128089
+ 872              		.align	3
+ 875              	Kd.4857:
+ 876 0010 9A999999 		.word	-1717986918
+ 877 0014 9999E93F 		.word	1072273817
+ 878              		.bss
  879              		.align	3
- 880              	y.4850:
- 881 0040 00000000 		.space	8
+ 880              	un.4860:
+ 881 0018 00000000 		.space	8
  881      00000000 
- 882              		.text
- 883              	.Letext0:
- 884              		.file 3 "C:\\Users\\user-pc\\Desktop\\EE2024WorkSpace\\Lib_CMSISv1p30_LPC17xx\\inc/LPC17xx.h"
- 885              		.file 4 "c:\\nxp\\lpcxpresso_6.1.4_194\\lpcxpresso\\tools\\bin\\../lib/gcc/arm-none-eabi/4.6.2/../
- 886              		.file 5 "C:\\Users\\user-pc\\Desktop\\EE2024WorkSpace\\Lib_CMSISv1p30_LPC17xx\\inc/system_LPC17xx.
+ 882              		.align	3
+ 883              	x4.4849:
+ 884 0020 00000000 		.space	8
+ 884      00000000 
+ 885              		.align	3
+ 886              	x3.4848:
+ 887 0028 00000000 		.space	8
+ 887      00000000 
+ 888              		.align	3
+ 889              	x2.4847:
+ 890 0030 00000000 		.space	8
+ 890      00000000 
+ 891              		.align	3
+ 892              	x1.4846:
+ 893 0038 00000000 		.space	8
+ 893      00000000 
+ 894              		.align	3
+ 895              	y.4850:
+ 896 0040 00000000 		.space	8
+ 896      00000000 
+ 897              		.text
+ 898              	.Letext0:
+ 899              		.file 3 "C:\\Users\\user-pc\\Desktop\\EE2024WorkSpace\\Lib_CMSISv1p30_LPC17xx\\inc/LPC17xx.h"
+ 900              		.file 4 "c:\\nxp\\lpcxpresso_6.1.4_194\\lpcxpresso\\tools\\bin\\../lib/gcc/arm-none-eabi/4.6.2/../
+ 901              		.file 5 "C:\\Users\\user-pc\\Desktop\\EE2024WorkSpace\\Lib_CMSISv1p30_LPC17xx\\inc/system_LPC17xx.
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:19     .text.NVIC_SetPriority:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:23     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:82     .text.SysTick_Config:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:86     .text.SysTick_Config:00000000 SysTick_Config
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:150    .bss:00000000 usTicks
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:147    .bss:00000000 $d
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:153    .text.SysTick_Handler:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:158    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:192    .text.plant:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:197    .text.plant:00000000 plant
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:868    .bss:00000020 x4.4849
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:871    .bss:00000028 x3.4848
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:874    .bss:00000030 x2.4847
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:877    .bss:00000038 x1.4846
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:880    .bss:00000040 y.4850
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:382    .text.PIDcontrol:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:387    .text.PIDcontrol:00000000 PIDcontrol
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:839    .bss:00000008 enOld.4859
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:842    .bss:00000010 sn.4858
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:848    .data:00000000 Kp.4855
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:854    .data:00000008 Ki.4856
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:860    .data:00000010 Kd.4857
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:865    .bss:00000018 un.4860
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:574    .rodata:00000000 $d
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:575    .rodata:00000000 .LC0
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:578    .rodata:0000002c .LC1
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:581    .text.main:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:586    .text.main:00000000 main
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:836    .bss:00000004 loop.4880
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:823    .text.main:00000218 $d
-C:\Users\user-pc\AppData\Local\Temp\ccPksoya.s:845    .data:00000000 $d
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:19     .text.NVIC_SetPriority:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:23     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:82     .text.SysTick_Config:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:86     .text.SysTick_Config:00000000 SysTick_Config
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:150    .bss:00000000 usTicks
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:147    .bss:00000000 $d
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:153    .text.SysTick_Handler:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:158    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:192    .text.plant:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:197    .text.plant:00000000 plant
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:883    .bss:00000020 x4.4849
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:886    .bss:00000028 x3.4848
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:889    .bss:00000030 x2.4847
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:892    .bss:00000038 x1.4846
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:895    .bss:00000040 y.4850
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:382    .text.PIDcontrol:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:387    .text.PIDcontrol:00000000 PIDcontrol
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:854    .bss:00000008 enOld.4859
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:857    .bss:00000010 sn.4858
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:863    .data:00000000 Kp.4855
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:869    .data:00000008 Ki.4856
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:875    .data:00000010 Kd.4857
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:880    .bss:00000018 un.4860
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:574    .rodata:00000000 $d
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:575    .rodata:00000000 .LC0
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:578    .rodata:00000008 .LC1
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:581    .rodata:00000034 .LC2
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:584    .text.main:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:589    .text.main:00000000 main
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:851    .bss:00000004 loop.4880
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:838    .text.main:00000238 $d
+C:\Users\user-pc\AppData\Local\Temp\ccfUqxyI.s:860    .data:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
