@@ -2380,7 +2380,7 @@
  615 002e FFF7FEFF 		bl	SysTick_Config
   66:../src/main.c **** 
   67:../src/main.c **** //  ASM version
-  68:../src/main.c **** 	sp = 1.0;
+  68:../src/main.c **** 	sp = 1;
  616              		.loc 2 68 0
  617 0032 4FF00002 		mov	r2, #0
  618 0036 4FF07E53 		mov	r3, #1065353216
@@ -2510,7 +2510,7 @@
   88:../src/main.c **** 
   89:../src/main.c **** //  C version
   90:../src/main.c **** 	//  C version
-  91:../src/main.c **** 	    sp = 1.0;
+  91:../src/main.c **** 	    sp = 1;
  721              		.loc 2 91 0
  722 0130 4FF00002 		mov	r2, #0
  723 0134 4FF07E53 		mov	r3, #1065353216
@@ -2699,37 +2699,37 @@
  880              		.file 5 "C:\\Users\\user-pc\\Desktop\\EE2024WorkSpace\\Lib_CMSISv1p30_LPC17xx\\inc/system_LPC17xx.
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:19     .text.NVIC_SetPriority:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:23     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:82     .text.SysTick_Config:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:86     .text.SysTick_Config:00000000 SysTick_Config
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:150    .bss:00000000 usTicks
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:147    .bss:00000000 $d
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:153    .text.SysTick_Handler:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:158    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:192    .text.plant:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:197    .text.plant:00000000 plant
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:862    .bss:00000020 x4.4849
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:865    .bss:00000028 x3.4848
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:868    .bss:00000030 x2.4847
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:871    .bss:00000038 x1.4846
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:874    .bss:00000040 y.4850
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:382    .text.PIDcontrol:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:387    .text.PIDcontrol:00000000 PIDcontrol
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:833    .bss:00000008 enOld.4859
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:836    .bss:00000010 sn.4858
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:842    .data:00000000 Kp.4855
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:848    .data:00000008 Ki.4856
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:854    .data:00000010 Kd.4857
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:859    .bss:00000018 un.4860
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:573    .rodata:00000000 $d
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:574    .rodata:00000000 .LC0
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:577    .rodata:0000002c .LC1
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:580    .text.main:00000000 $t
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:585    .text.main:00000000 main
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:830    .bss:00000004 loop.4879
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:817    .text.main:00000210 $d
-C:\Users\user-pc\AppData\Local\Temp\ccLjjWZA.s:839    .data:00000000 $d
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:19     .text.NVIC_SetPriority:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:23     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:82     .text.SysTick_Config:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:86     .text.SysTick_Config:00000000 SysTick_Config
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:150    .bss:00000000 usTicks
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:147    .bss:00000000 $d
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:153    .text.SysTick_Handler:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:158    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:192    .text.plant:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:197    .text.plant:00000000 plant
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:862    .bss:00000020 x4.4849
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:865    .bss:00000028 x3.4848
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:868    .bss:00000030 x2.4847
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:871    .bss:00000038 x1.4846
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:874    .bss:00000040 y.4850
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:382    .text.PIDcontrol:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:387    .text.PIDcontrol:00000000 PIDcontrol
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:833    .bss:00000008 enOld.4859
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:836    .bss:00000010 sn.4858
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:842    .data:00000000 Kp.4855
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:848    .data:00000008 Ki.4856
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:854    .data:00000010 Kd.4857
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:859    .bss:00000018 un.4860
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:573    .rodata:00000000 $d
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:574    .rodata:00000000 .LC0
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:577    .rodata:0000002c .LC1
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:580    .text.main:00000000 $t
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:585    .text.main:00000000 main
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:830    .bss:00000004 loop.4879
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:817    .text.main:00000210 $d
+C:\Users\user-pc\AppData\Local\Temp\ccpOxnpD.s:839    .data:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

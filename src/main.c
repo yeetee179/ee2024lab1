@@ -65,7 +65,7 @@ int main(void)
 	SysTick_Config(SystemCoreClock / 1000000);  // every 1us
 
 //  ASM version
-	sp = 1.0;
+	sp = 1;
 	u = 0.0;
 	startTicks = usTicks;
     for (i=0; i<50; i++)
@@ -88,7 +88,7 @@ int main(void)
 
 //  C version
 	//  C version
-	    sp = 1.0;
+	    sp = 1;
 	    u = 0.0;
 	    startTicks = usTicks;
 	    for (i=0; i<50; i++)

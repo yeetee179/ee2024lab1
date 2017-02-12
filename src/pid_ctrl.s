@@ -37,18 +37,15 @@ pid_ctrl:
 	ADD R5,R0     @sn = sn + en
 	STR R5,[R2]
 
-//	LDR R12,THIS_IS_9500000 //R12 contain the 95000000
-
-	LDR R12,THIS_IS_9500 //R12 contain the 95000000
+	LDR R12,THIS_IS_9500 //R12 contain the 9500
 
 
 	CMP R5,R12
 	IT GT
 	MOVGT R5,R12
 
-//	LDR R12,THIS_IS_neg_9500000 //R12 contain the -95000000
 
-	LDR R12,THIS_IS_neg_9500 //R12 contain the -95000000
+	LDR R12,THIS_IS_neg_9500 //R12 contain the -9500
 
 	CMP R5,R12
 	IT LT
