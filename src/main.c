@@ -66,7 +66,7 @@ int main(void)
 
 //  ASM version
 	sp = 1.0;
-	u = 0.0;
+	u = 0;
 	startTicks = usTicks;
     for (i=0; i<50; i++)
     {
@@ -81,7 +81,7 @@ int main(void)
 
         u = u*0.00001;
 
-//       	printf("%f\n",e);
+       	printf("%f\n",e);
     }
     stopTicks = usTicks;
     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
@@ -89,7 +89,7 @@ int main(void)
 //  C version
 	//  C version
 	    sp = 1.0;
-	    u = 0.0;
+	    u = 0;
 	    startTicks = usTicks;
 	    for (i=0; i<50; i++)
 	    {
@@ -100,7 +100,8 @@ int main(void)
 
 	        u = PIDcontrol(e, st);
 
-//	       	printf("%f\n",e);
+	       	printf("%f\n",e);
+
 	    }
 	    stopTicks = usTicks;
 	    printf("Time taken (C version): %ld microseconds\n",(stopTicks-startTicks));
