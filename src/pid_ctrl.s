@@ -51,6 +51,7 @@ pid_ctrl:
 	IT LT
 	MOVLT R5,R12
 
+CALCULATIONS:
 	LDR R8,KP      @R8 = Kp
 	MUL R9,R0,R8   @R9 = Kp*en
 	LDR R8,KI      @R8 = ki
