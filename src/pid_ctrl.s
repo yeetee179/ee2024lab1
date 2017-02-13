@@ -50,7 +50,6 @@ pid_ctrl:
 	IT LT
 	MOVLT R5,R11
 
-////////////////////////////////////////////////////////////////////////////////////
 CALCULATION:
 	MOV R8,#25      @R8 = Kp
 	MUL R9,R0,R8   @R9 = Kp*en
@@ -69,9 +68,6 @@ CALCULATION:
 	STR R0,[R3]
 
 	MOVS R0,R8
-
-
-
 @ POP the registers you modify, e.g. R2, R3, R4 and R5*, from the stack
 @ * this is just an example; the actual registers you use may be different
 @ (this will be explained in lectures)
@@ -80,13 +76,6 @@ CALCULATION:
  	BX	LR
 //BX exit from assemblys
 //declare constant.
-//KP:
-//	.word 25
-//KI:
-//	.word 10
-//KD:
-//	.word 80
-
 THIS_IS_9500:
 	.word 9500
 THIS_IS_neg_9500:
