@@ -74,14 +74,13 @@ int main(void)
 
         y = plant(u,st,-0.8,0.2); // Do NOT change the plant parameters
         e = sp - y;
-
         e_scaling = (e*1000.0);
 
         u = pid_ctrl(e_scaling,  st);
 
         u = u*0.00001;
 
-//       	printf("%0.3f\n",e);
+//       	printf("%f\n",e);
     }
     stopTicks = usTicks;
     printf("Time taken (ASM version): %ld microseconds\n",(stopTicks-startTicks));
@@ -99,8 +98,7 @@ int main(void)
 	        e = sp - y;
 
 	        u = PIDcontrol(e, st);
-
-//	       	printf("%0.3f\n",e);
+//	       	printf("%f\n",e);
 	    }
 	    stopTicks = usTicks;
 	    printf("Time taken (C version): %ld microseconds\n",(stopTicks-startTicks));

@@ -10,7 +10,7 @@ pid_ctrl:
 @ PUSH the registers you modify, e.g. R2, R3, R4 and R5*, to the stack
 @ * this is just an example; the actual registers you use may be different
 @ (this will be explained in lectures)
-	PUSH	{R1-R12}
+	PUSH	{R2-R12}
 
 @  Write PID controller function in assembly language here
 @  Currently, nothing is done and this function returns straightaway
@@ -50,9 +50,7 @@ pid_ctrl:
 	CMP R5,R12
 	IT LT
 	MOVLT R5,R12
-////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////
 	LDR R8,KP      @R8 = Kp
 	MUL R9,R0,R8   @R9 = Kp*en
 	LDR R8,KI      @R8 = ki
@@ -66,19 +64,13 @@ pid_ctrl:
 	MUL R8,R4,R9   @R8 = kd * (en-enOld)
 				   @R8 is not free
 	ADD R8,R10     @R8 = un
-
 	STR R0,[R3]
-
-
 	MOVS R0,R8
-
-
-
 @ POP the registers you modify, e.g. R2, R3, R4 and R5*, from the stack
 @ * this is just an example; the actual registers you use may be different
 @ (this will be explained in lectures)
 //why stack (push and pop)////////////////////
-	POP	{R1-R12}
+	POP	{R2-R12}
  	BX	LR
 //BX exit from assemblys
 //declare constant.
